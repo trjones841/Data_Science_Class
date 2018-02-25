@@ -6,12 +6,12 @@ import pandas as pd
 
 # !cat olympics.csv - works in Jypitar env
 # for Pycharm, have file with location
-df = pd.read_csv('/home/tjones/PycharmProjects/Data_Science_Class/Week 2/olympics.csv')
+df = pd.read_csv('olympics.csv')
 print(df.head())
 print('\n')
 
 
-df = pd.read_csv('/home/tjones/PycharmProjects/Data_Science_Class/Week 2/olympics.csv', index_col = 0, skiprows=1)
+df = pd.read_csv('olympics.csv', index_col = 0, skiprows=1)
 print(df.head())
 print('\n')
 
@@ -32,28 +32,28 @@ print(df.head())
 print('\n')
 #
 # Querying a DataFrame
-only_gold = df.where(df['Gold'] > 0)
+only_gold = df.where(df['gold'] > 0)
 only_gold.head()
 print('\n')
 
-only_gold['Gold'].count()
+only_gold['gold'].count()
 print('\n')
 
-df['Gold'].count()
+df['gold'].count()
 print('\n')
 
 only_gold = only_gold.dropna()
 only_gold.head()
 print('\n')
 
-only_gold = df[df['Gold'] > 0]
+only_gold = df[df['gold'] > 0]
 only_gold.head()
 print('\n')
 
-len(df[(df['Gold'] > 0) | (df['Gold.1'] > 0)])
+len(df[(df['gold'] > 0) | (df['gold.1'] > 0)])
 print('\n')
 
-df[(df['Gold.1'] > 0) & (df['Gold'] == 0)]
+df[(df['gold.1'] > 0) & (df['gold'] == 0)]
 print('\n')
 #
 # Indexing Dataframes
@@ -61,7 +61,7 @@ df.head()
 print('\n')
 
 df['country'] = df.index
-df = df.set_index('Gold')
+df = df.set_index('gold')
 df.head()
 print('\n')
 

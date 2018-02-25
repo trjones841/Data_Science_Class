@@ -8,22 +8,6 @@ http://planetpython.org
 http://dataskeptic.com
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 '''
 
 import pandas as pd

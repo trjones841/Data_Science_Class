@@ -1,0 +1,36 @@
+"/Applications/Python 3.6/IDLE.app/Contents/MacOS/Python" "/Users/tejones/PycharmProjects/Data_Science_Class/Week 2/Assignment 2.py"
+max_rows:  60
+max_columns:  20
+
+### PART 1 ###
+
+Ques1: Country with the most gold medals in the Summer Games:  United States
+
+Ques2: Country with biggest gold medal difference between summer & winter games is:   United States
+
+Ques3: Country that has the biggest difference between their summer & winter gold medal counts:   Bulgaria
+
+Ques4: Create series called Points that sums medal totals with gold*3, silver*2 and bronze*1:  Team (IOC code)
+ United States    5937
+ Soviet Union     2526
+ Great Britain    1720
+ Germany          1634
+ France           1583
+Name: Points, dtype: int64
+
+### PART 2 ###
+
+Ques5: State with the most counties is:  Texas
+
+Ques6: The three most populous states with the three most populous counties is:  ['California', 'Texas', 'Illinois']
+
+Ques7: County with the largest absolute change in population within the period 2010-2015 is:  Harris County
+
+Ques8: List of counties that belong to regions 1 or 2, whose name starts with 'Washington', and whose POPESTIMATE2015 was greater than their POPESTIMATE 2014
+                   CTYNAME        STNAME
+SUMLEV
+50      Washington County          Iowa
+50      Washington County     Minnesota
+50      Washington County  Pennsylvania
+50      Washington County  Rhode Island
+50      Washington County     Wisconsin
