@@ -85,7 +85,7 @@ def answer_four():
     return df['Points'].sort_values(ascending=False)
 
 A4 = answer_four()
-print('\nQues4: Create series called Points that sums medal totals with gold*3, silver*2 and bronze*1: ', A4.head())
+print('\nQues4: Create series called Points that sums medal totals with gold*3, silver*2 and bronze*1: \n', A4.head())
 
 #####################PART 1 ###########################################################################################
 print('\n### PART 2 ###')
