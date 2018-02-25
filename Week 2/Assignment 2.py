@@ -38,7 +38,7 @@ df = df.drop('Totals')
 
 
 def answer_one():
-    return df.gold[df.gold == df['gold'].max()].index[0]
+    return df['gold'][df['gold'] == df['gold'].max()].index[0]
 
 print('\nQues1: Country with the most gold medals in the Summer Games:',answer_one())
 
@@ -115,10 +115,16 @@ print('\nQues5: State with the most counties is: ',answer_five())
 # This function should return a list of string values.
 
 def answer_six():
-    #remove county 0 (is just totals)
     state_df = census_df[census_df['COUNTY'] != 0]
-    #sort CENSUS2010POP for each state, then sum first 3 & return as list
-    return state_df.groupby('STNAME')['CENSUS2010POP'].nlargest(3).groupby('STNAME').sum().nlargest(3).index.values.tolist()
+    pop_per_state = state_df.groupby('STNAME')['CENSUS2010POP'].nlargest(3)
+    print('type', type(pop_per_state))
+    pop_per_state = pop_per_state.reset_index(level='SUMLEV',drop=True)
+    #pop_per_state.reset_index(drop=True)
+    pop_per_state.groupby('STNAME').sum().nlargest(3).index.values.tolist()
+    print(pop_per_state.head(2))
+    print(pop_per_state.iloc[0])
+
+    return True
 
 print('\nQues6: The three most populous states with the three most populous counties is: ',answer_six())
 
