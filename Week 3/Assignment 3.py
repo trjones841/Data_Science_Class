@@ -267,7 +267,7 @@ def answer_six():
     return (Top15['% Renewable'].idxmax(), Top15['% Renewable'].max)
 
 
-print('answer_six(): \n', answer_six())
+# print('answer_six(): \n', answer_six())
 
 
 # Question 7 (6.6%)
@@ -324,7 +324,7 @@ def answer_nine():
 # print('answer_nine(): \n', answer_nine())
 
 
-import matplotlib as plt
+# import matplotlib as plt
 
 def plot9():
     #import matplotlib as plt
@@ -347,19 +347,15 @@ def plot9():
 # sorted in ascending order of rank.
 
 
+
+
 def answer_ten():
     Top15 = answer_one()
-    print(list(Top15))
-    total_median = Top15['% Renewable'].median()
-    print(total_median)
-    #if Top15['% Renewable'] >= total_median:
-    #    Top15['AbvMedian'] = '1'
-    #else:
-    #    Top15['AbvMedian'] = '0'
-    return "ANSWER"
+    #print(list(Top15))
+    return (Top15['% Renewable'] > Top15['% Renewable'].median()).astype(int).rename('HighRenew')
 
-
-print('answer_ten(): \n', answer_ten())
+#print('type(answer_ten()): \n', type(answer_ten()))
+#print('answer_ten(): \n', answer_ten())
 
 # Question 11 (6.6%)
 # Use the following dictionary to group the Countries by Continent, then create a
@@ -389,27 +385,16 @@ def answer_eleven():
     Top15 = answer_one()
     idx = pd.MultiIndex.from_product([['Continent'], ['Asia', 'Australia', 'Europe', 'North America', 'South America']])
     cols = ['size', 'sum', 'mean', 'std']
-    eleven_df = pd.DataFrame('-', idx, cols)
-    eleven_data = pd.DataFrame.from_dict(ContinentDict,orient='index')
-    #eleven_data.columns=["Continent"]
-    #for item in cols:
-    #   eleven_data.columns=[item]
-    #    eleven_data[item] = pd.Series('-', index=eleven_data.index)
-    stacked = eleven_data.stack()
-    print('stacked: \n', stacked)
-    #eleven_df.set_index(['Continent'],inplace=True)
-    #pd.merge(Energy_GDP_df, ScimEn, on='Country')
-    # eleven_df = pd.merge(eleven_df,eleven_data)
-    print(eleven_data)
+
     #for cntry,key in ContinentDict.items():
     #    print(cntry,key)
     #    if eleven_df.index.name == key
 
     # print('\n')
-    return eleven_df
+    return Top15
 
 
-# print('answer_eleven(): \n', answer_eleven())
+print('answer_eleven(): \n', answer_eleven())
 
 
 # Question 12 (6.6%)
@@ -421,11 +406,28 @@ def answer_eleven():
 
 def answer_twelve():
     Top15 = answer_one()
-    # print(list(Top15))
+    ContinentDict = {'China': 'Asia',
+                     'United States': 'North America',
+                     'Japan': 'Asia',
+                     'United Kingdom': 'Europe',
+                     'Russian Federation': 'Europe',
+                     'Canada': 'North America',
+                     'Germany': 'Europe',
+                     'India': 'Asia',
+                     'France': 'Europe',
+                     'South Korea': 'Asia',
+                     'Italy': 'Europe',
+                     'Spain': 'Europe',
+                     'Iran': 'Asia',
+                     'Australia': 'Australia',
+                     'Brazil': 'South America'}
+    Top15 = Top15.reset_index()
+    Top15['Continent'] = [ContinentDict[country] for country in Top15['Country']]
+    Top15['bins'] = pd.cut(Top15['% Renewable'], 5)
     return "ANSWER"
 
 
-# print('answer_twelve(): \n', answer_twelve())
+print('answer_twelve(): \n', answer_twelve())
 
 
 # Question 13 (6.6%)
@@ -439,11 +441,11 @@ def answer_twelve():
 
 def answer_thirteen():
     Top15 = answer_one()
-    # print(list(Top15))
-    return "ANSWER"
+    Top15 = answer_one()
+    Top15['PopEst'] = (Top15['Energy Supply'] / Top15['Energy Supply per Capita']).astype(float)
+    return Top15['PopEst'].apply(lambda x: '{0:,}'.format(x))
 
-
-# print('answer_thirteen(): \n', answer_thirteen())
+print('answer_thirteen(): \n', answer_thirteen())
 
 
 # Optional
