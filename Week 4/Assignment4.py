@@ -72,7 +72,8 @@ def get_list_of_university_towns():
     df = df.drop('drop', 1)
     df[['City', 'Universities']] = pd.DataFrame(df.Cities.str.split(n=1, expand=True))
     df = df.drop('Cities', 1)
-
+    #df['E'] = df['B'].map(lambda x: re.sub(r'\W+', '', x))
+    
     return df.head(10)
 
 def get_recession_start():
